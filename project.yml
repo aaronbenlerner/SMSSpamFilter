@@ -1,0 +1,54 @@
+name: SMSSpamFilter
+options:
+  bundleIdPrefix: com.aaron
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    CODE_SIGNING_ALLOWED: "NO"
+    CODE_SIGNING_REQUIRED: "NO"
+    CODE_SIGN_IDENTITY: ""
+
+targets:
+  SMSSpamFilter:
+    type: application
+    platform: iOS
+    sources:
+      - path: SMSSpamFilter
+        excludes:
+          - "*.entitlements"
+    resources:
+      - path: SMSSpamClassifier.json
+    info:
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: SMS Spam Filter
+    entitlements:
+      path: SMSSpamFilter/SMSSpamFilter.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - target: MessageFilterExtension
+
+  MessageFilterExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: MessageFilterExtension/MessageFilterExtension.swift
+    resources:
+      - path: SMSSpamClassifier.json
+    info:
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.identitylookup.message-filter
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).MessageFilterExtension
+    entitlements:
+      path: MessageFilterExtension/MessageFilterExtension.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter.MessageFilterExtension
+        TARGETED_DEVICE_FAMILY: "1"
