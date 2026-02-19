@@ -25,12 +25,11 @@ targets:
       properties:
         UILaunchScreen: {}
         CFBundleDisplayName: SMS Spam Filter
-    entitlements:
-      path: SMSSpamFilter/SMSSpamFilter.entitlements
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter
         TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_ENTITLEMENTS: SMSSpamFilter/SMSSpamFilter.entitlements
     dependencies:
       - target: MessageFilterExtension
 
@@ -46,9 +45,8 @@ targets:
         NSExtension:
           NSExtensionPointIdentifier: com.apple.identitylookup.message-filter
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).MessageFilterExtension
-    entitlements:
-      path: MessageFilterExtension/MessageFilterExtension.entitlements
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter.MessageFilterExtension
         TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_ENTITLEMENTS: MessageFilterExtension/MessageFilterExtension.entitlements
