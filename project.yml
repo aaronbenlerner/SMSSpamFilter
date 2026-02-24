@@ -8,6 +8,7 @@ options:
 settings:
   base:
     CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Apple Distribution"
 
 targets:
   SMSSpamFilter:
@@ -28,7 +29,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter
         TARGETED_DEVICE_FAMILY: "1"
-        CODE_SIGN_ENTITLEMENTS: SMSSpamFilter/SMSSpamFilter.entitlements
+        PROVISIONING_PROFILE_SPECIFIER: SMSSpamFilter_AdHoc
     dependencies:
       - target: MessageFilterExtension
 
@@ -49,4 +50,4 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aaron.SMSSpamFilter.MessageFilterExtension
         TARGETED_DEVICE_FAMILY: "1"
-        CODE_SIGN_ENTITLEMENTS: MessageFilterExtension/MessageFilterExtension.entitlements
+        PROVISIONING_PROFILE_SPECIFIER: MessageFilterExt_AdHoc
