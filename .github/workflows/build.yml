@@ -62,6 +62,7 @@ jobs:
           xcodebuild archive \
             -project SMSSpamFilter.xcodeproj \
             -scheme SMSSpamFilter \
+            -configuration Release \
             -archivePath build/SMSSpamFilter.xcarchive \
             -destination 'generic/platform=iOS' \
             -quiet
