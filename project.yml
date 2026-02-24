@@ -9,6 +9,7 @@ settings:
   base:
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: "Apple Distribution"
+    DEVELOPMENT_TEAM: "9Y6XS38XC3"
 
 targets:
   SMSSpamFilter:
